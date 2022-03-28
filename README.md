@@ -5,6 +5,7 @@
 - [Homework 1](#homework-1)
 - [Homework 2](#homework-2)
 - [Homework 3](#homework-3)
+- [Mid Project](#mid-project)
 
 ## [Homework 1](https://github.com/NeymanThomas/4499-Assignments/tree/main/Homework-1)
 Import in the MNIST digits dataset (70,000 images, each 28x28 pixels). Preprocess the data as necessary. The training set should have 60k images and the test set 10k. 
@@ -40,3 +41,43 @@ Try different NN architectures and options. Use KerasTuner (or alternatively the
 You are NOT expected to utilize transfer learning, data augmentation, or convolutional neural networks (these will be added in a future assignment).
 
 Give converged validation and testing accuracy for each model trained (utilizing the EarlyStopping callback). Which one was the best? Display five misclassified images from your best model. Why do you think it was the best? Note: Your grade for this homework will depend on the quality of your best model.
+
+## [Mid Project](https://github.com/NeymanThomas/4499-Assignments/tree/main/Mid-Project)
+Use the Cats and Dogs dataset in Kaggle from Homework 3. Download the dataset and perform necessary data wrangling or preprocessing.
+### **Part 1**
+Create a CNN dog/cat classifier with the following architecture: </br>
+Conv2D: 64 filters, 7x7 kernel </br>
+MaxPooling2D: 2x2 pool</br>
+Conv2D: 128 filters, 3x3 kernel</br>
+Conv2D: 128 filters, 3x3 kernel</br>
+MaxPooling2D: 2x2 pool</br>
+Conv2D: 256 filters, 3x3 kernel</br>
+Conv2D: 256 filters, 3x3 kernel</br>
+MaxPooling2D: 2x2 pool</br>
+Flatten</br>
+Dense: 128 neurons</br>
+Dropout(15%)</br>
+Dense: 64 neurons</br>
+Dropout(15%)</br>
+Output</br>
+strides=1, padding="same", and activation="relu" for all relevant layers</br>
+Utilize the Nadam optimizer and Early Stopping
+
+What is your accuracy for the validation set and for the test set? Plot several misclassified images.
+
+Save your accuracy and val_accuracy each epoch. You will plot them in Part 4.
+
+### **Part 2**
+Add data augmentation. Try different CNN architectures and/or parameters to improve your model. You may also try splitting up the dataset differently (ie more images in training and less in validation and testing sets).
+
+What is the accuracy of your best model (on both validation and testing sets)? Plot several misclassified images. Save your accuracy and val_accuracy per epoch (from your best model). You will plot them in Part 4.
+
+### **Part 3**
+Use transfer learning. Train on at least three different expert CNNs: Xception, a variant of ResNet, and a variant of EfficientNet. See [here](https://keras.io/api/applications/) for a full list of models available in Keras. Please note that many of these have special requirements (for image size etc). You decide (or experiment with) how to best transfer learn on these expert CNNs.
+
+What is the accuracy of your best model (on both validation and testing sets)? Plot several misclassified images. Save your accuracy and val_accuracy per epoch (from your best model). You will plot them in Part 4.
+
+### **Part 4**
+Plot the training and validation accuracy per epoch for your (best) model from each part. Discuss any differences. Which model(s) tend to be overfit? Which model(s) are not? Why?
+
+Note: If you have a model B that is only a little better than a model A with respect to validation/testing accuracy, but model B is not overfit and model A is, that is actually a huge improvement.
